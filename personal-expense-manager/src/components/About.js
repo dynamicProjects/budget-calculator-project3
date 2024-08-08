@@ -1,28 +1,39 @@
-
 import React from 'react';
 import '../styles/about.scss';
+
+import aboutImage from '../assets/images/about-image.png';
+
 
 const About = () => {
     return (
         <div className="about-container">
-            <h1>About Budget Calculator</h1>
-            <p>
-                The Budget Calculator is an intuitive and user-friendly tool designed to help you manage your finances
-                effectively. It allows you to track your income and expenses, giving you a clear picture of your financial
-                situation. With features like expense categorization and dynamic charts, you can easily analyze your
-                spending patterns and make informed financial decisions.
-            </p>
-            <p>
-                Our goal is to provide you with a simple yet powerful tool to achieve your financial goals. Whether you're
-                saving for a big purchase, managing your monthly budget, or just keeping track of where your money goes,
-                the Budget Calculator has you covered.
-            </p>
-            <p>
-                We hope you find this tool helpful in your financial journey. If you have any feedback or suggestions,
-                please feel free to reach out to us.
-            </p>
+            <div className="about-header">
+                <h1>About Budget Calculator</h1>
+            </div>
+            <div className="about-content">
+                <div className="about-image">
+                <img src={aboutImage} alt="Budget planning" className="about-image" />
+                </div>
+                <div className="about-text">
+                    <p>
+                        The Budget Calculator is a modern and user-friendly tool designed to empower you with financial
+                        insights. By tracking your income and expenses, this tool provides a comprehensive view of your financial
+                        health, helping you make informed decisions.
+                    </p>
+                    <p>
+                        Our features include detailed expense categorization, interactive charts, and customizable settings to
+                        ensure that managing your finances is both effective and efficient. Whether you're planning for the future
+                        or monitoring your current spending, the Budget Calculator is here to support you.
+                    </p>
+                    <p>
+                        We continuously strive to enhance your experience and welcome any feedback or suggestions. Your journey to
+                        financial stability starts here.
+                    </p>
+                </div>
+            </div>
         </div>
     );
 };
 
 export default About;
+

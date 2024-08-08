@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement } from 'chart.js';
 import AddExpense from './AddExpense';
@@ -55,6 +56,9 @@ const Dashboard = ({ handleLogout }) => {
         <div className="dashboard">
             <header className="dashboard-header">
                 <h1>Budget Calculator</h1>
+                <nav>
+                    <Link to="/about" className="nav-link">About</Link>
+                </nav>
                 <button onClick={handleLogout} className="logout-btn">Logout</button>
             </header>
             <div className="summary-section">
