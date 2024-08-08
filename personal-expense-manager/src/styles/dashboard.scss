@@ -1,20 +1,38 @@
 .dashboard {
-    padding: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f9;
-  
-    .dashboard-header {
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+
+  .dashboard-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
-  
+
       h1 {
         color: #f4f6f9;
       }
-    }
-  
-    .logout-btn {
+
+      nav {
+          display: flex;
+          align-items: center;
+          margin-left: auto; /* Aligns the nav to the right of the header */
+
+          .nav-link {
+              margin-right: 20px;
+              color: #42A5F5;
+              text-decoration: none;
+              font-size: 16px;
+              transition: color 0.3s;
+
+              &:hover {
+                  color: #1E88E5;
+              }
+          }
+      }
+  }
+
+  .logout-btn {
       background-color: #FF6F61;
       border: none;
       color: white;
@@ -23,65 +41,64 @@
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s;
-  
+
       &:hover {
-        background-color: #e55d50;
+          background-color: #e55d50;
       }
-    }
-  
-    .summary-section,
-    .dti-section {
+  }
+
+  .summary-section,
+  .dti-section {
       background: white;
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       margin-bottom: 20px;
-  
+
       h2 {
-        margin-bottom: 15px;
-        color: #333;
+          margin-bottom: 15px;
+          color: #333;
       }
-  
+
       table {
-        width: 100%;
-        border-collapse: collapse;
-  
-        th,
-        td {
-          border: 1px solid #ddd;
-          padding: 10px;
-          text-align: center;
-        }
+          width: 100%;
+          border-collapse: collapse;
+
+          th,
+          td {
+              border: 1px solid #ddd;
+              padding: 10px;
+              text-align: center;
+          }
       }
-  
+
       p {
-        margin: 5px 0;
+          margin: 5px 0;
       }
-    }
-  
-    .charts-container {
+  }
+
+  .charts-container {
       display: flex;
       gap: 20px;
       margin-bottom: 30px;
-  
+
       .chart-card {
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        flex: 1;
-  
-        h3 {
-          margin-bottom: 15px;
-          color: #333;
-        }
+          background: white;
+          border-radius: 10px;
+          padding: 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          flex: 1;
+
+          h3 {
+              margin-bottom: 15px;
+              color: #333;
+          }
       }
-    }
-  
-    @media (max-width: 768px) {
-      .charts-container {
-        flex-direction: column;
-      }
-    }
   }
-  
+
+  @media (max-width: 768px) {
+      .charts-container {
+          flex-direction: column;
+      }
+  }
+}
