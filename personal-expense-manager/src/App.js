@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import About from './components/About';
+import Transactions from './components/Transactions';
 import './App.css';
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
                     <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login handleLogin={handleLogin} />} />
                     <Route path="/dashboard" element={isAuthenticated ? <Dashboard handleLogout={handleLogout} /> : <Navigate to="/" />} />
                     <Route path="/about" element={isAuthenticated ? <About handleLogout={handleLogout} /> : <Navigate to="/" />} />
+                    <Route path="/transactions" element={isAuthenticated ? <Transactions handleLogout={handleLogout} /> : <Navigate to="/" />} />
                 </Routes>
             </div>
         </Router>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement } from 'chart.js';
+import Navbar from './Navbar';
 import AddExpense from './AddExpense';
 import ExpenseList from './ExpenseList';
 import '../styles/dashboard.scss';
@@ -53,13 +54,10 @@ const Dashboard = ({ handleLogout }) => {
 
     return (
         <div className="dashboard">
-            <header className="dashboard-header">
-                <h1>Budget Calculator</h1>
-                <nav>
-                    <Link to="/about" className="nav-link">About</Link>
-                </nav>
-                <button onClick={handleLogout} className="logout-btn">Logout</button>
-            </header>
+            <Navbar
+                title="Budget Calculator"
+                handleLogout={handleLogout}
+            />
             <div className="summary-section">
                 <h2>Summary</h2>
                 <table className="summary-table">
