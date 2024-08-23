@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement } from 'chart.js';
 import Navbar from './Navbar';
@@ -55,7 +54,7 @@ const Dashboard = ({ handleLogout }) => {
     return (
         <div className="dashboard">
             <Navbar
-                title="Budget Calculator"
+                title="Dashboard"
                 handleLogout={handleLogout}
             />
             <div className="summary-section">

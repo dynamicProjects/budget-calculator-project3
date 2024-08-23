@@ -5,15 +5,11 @@ import '../styles/about.scss';
 import aboutImage from '../assets/images/about-image.png';
 
 
-const About = ({ handleLogout }) => {
+const FeedbackSupport = ({ handleLogout }) => {
     return (
         <div className="about-container">
-            <Navbar
-                title="About"
-                handleLogout={handleLogout}
-            />
             <div className="about-header">
-                <h1>About Budget Calculator</h1>
+                <Navbar title="Feedback/Support" handleLogout={handleLogout}/>
             </div>
             <div className="about-content">
                 <div className="about-image">
@@ -39,5 +35,5 @@ const About = ({ handleLogout }) => {
         </div>
     );
 };
-export default About;
+export default FeedbackSupport;
 

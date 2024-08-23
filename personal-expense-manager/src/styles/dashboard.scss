@@ -1,51 +1,6 @@
 .dashboard {
-  padding: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f6f9;
-
-  .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-
-      h1 {
-        color: #f4f6f9;
-      }
-
-      nav {
-          display: flex;
-          align-items: center;
-          margin-left: auto;
-
-          .nav-link {
-              margin-right: 20px;
-              color: #42A5F5;
-              text-decoration: none;
-              font-size: 16px;
-              transition: color 0.3s;
-
-              &:hover {
-                  color: #1E88E5;
-              }
-          }
-      }
-  }
-
-  .logout-btn {
-      background-color: #FF6F61;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
-
-      &:hover {
-          background-color: #e55d50;
-      }
-  }
 
   .summary-section,
   .dti-section {

@@ -1,7 +1,5 @@
 .about-container {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
   font-family: 'Roboto', sans-serif;
   color: #333;
 
@@ -21,6 +19,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 30px;
+      padding: 40px 20px;
 
       .about-image {
           flex: 1;
