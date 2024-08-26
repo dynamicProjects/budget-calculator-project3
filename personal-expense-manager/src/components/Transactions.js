@@ -46,7 +46,7 @@ const Transactions = ({ handleLogout }) => {
                 { withCredentials: true }
             );
             const filteredTransactions = response.data.filter((transaction) => {
-                const transactionDate = moment(new Date(transaction.date).toLocaleDateString('en-US', { timeZone: 'UTC' }));
+                const transactionDate = moment.utc(new Date(transaction.date));
                 const isSameMonth = transactionDate.isSame(currentMonth, "month");
 
                 const matchesType =
