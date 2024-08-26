@@ -19,10 +19,24 @@ const Transactions = ({ handleLogout }) => {
     const [transactionType, setTransactionType] = useState("All");
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [currentMonth, setCurrentMonth] = useState(moment().startOf("month"));
+    const creditCategoriesArray = ["Salary", "Side Jobs", "Pension", "Other (Income)"];
+    const debitCategoriesArray = [
+        "Eating Out",
+        "Shopping",
+        "Transportation",
+        "Entertainment",
+        "Rent",
+        "Utility",
+        "Other (Home)",
+        "Family",
+        "Health/Sport",
+        "Pets",
+        "Travel",
+        "Other (Expenses)"];
 
     useEffect(() => {
         fetchTransactions();
-    }, [currentMonth, transactionType, selectedCategory]);
+    });
 
     const fetchTransactions = async () => {
         try {
@@ -85,21 +99,6 @@ const Transactions = ({ handleLogout }) => {
         );
     };
 
-    const creditCategoriesArray = ["Salary", "Side Jobs", "Pension", "Other (Income)"];
-    const debitCategoriesArray = [
-        "Eating Out",
-        "Shopping",
-        "Transportation",
-        "Entertainment",
-        "Rent",
-        "Utility",
-        "Other (Home)",
-        "Family",
-        "Health/Sport",
-        "Pets",
-        "Travel",
-        "Other (Expenses)"];
-
     const openModal = (type) => {
         setFormData({ ...formData, type: type, category: type === 'Credit' ? creditCategoriesArray[0] : debitCategoriesArray[0] });
         setShowModal(true);
@@ -123,7 +122,7 @@ const Transactions = ({ handleLogout }) => {
                     <div>
                         <strong>Number of Transactions:</strong> {transactions.length}
                     </div>
-                    <div>
+                    <div className={calculateBalance() >= 0 ? "text-success" : "text-danger"}>
                         <strong>Balance Amount:</strong> ${calculateBalance().toFixed(2)}
                     </div>
                 </div>
@@ -154,22 +153,16 @@ const Transactions = ({ handleLogout }) => {
                         <Dropdown.Menu>
                             <Dropdown.Item eventKey="All">All</Dropdown.Item>
                             {/* Add your categories here */}
-                            <Dropdown.Item eventKey="Salary">Salary</Dropdown.Item>
-                            <Dropdown.Item eventKey="Side Jobs">Side Jobs</Dropdown.Item>
-                            <Dropdown.Item eventKey="Pension">Pension</Dropdown.Item>
-                            <Dropdown.Item eventKey="Other (Income)">Other (Income)</Dropdown.Item>
-                            <Dropdown.Item eventKey="Eating Out">Eating Out</Dropdown.Item>
-                            <Dropdown.Item eventKey="Shopping">Shopping</Dropdown.Item>
-                            <Dropdown.Item eventKey="Transportation">Transportation</Dropdown.Item>
-                            <Dropdown.Item eventKey="Entertainment">Entertainment</Dropdown.Item>
-                            <Dropdown.Item eventKey="Rent">Rent</Dropdown.Item>
-                            <Dropdown.Item eventKey="Utility">Utility</Dropdown.Item>
-                            <Dropdown.Item eventKey="Other (Home)">Other (Home)</Dropdown.Item>
-                            <Dropdown.Item eventKey="Family">Family</Dropdown.Item>
-                            <Dropdown.Item eventKey="Health/Sport">Health/Sport</Dropdown.Item>
-                            <Dropdown.Item eventKey="Pets">Pets</Dropdown.Item>
-                            <Dropdown.Item eventKey="Travel">Travel</Dropdown.Item>
-                            <Dropdown.Item eventKey="Other (Expenses)">Other (Expenses)</Dropdown.Item>
+                            {
+                                creditCategoriesArray.map((val, index) => (
+                                    <Dropdown.Item key={index} eventKey={val}>{val}</Dropdown.Item>
+                                ))
+                            }
+                            {
+                                debitCategoriesArray.map((val, index) => (
+                                    <Dropdown.Item key={index} eventKey={val}>{val}</Dropdown.Item>
+                                ))
+                            }
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>

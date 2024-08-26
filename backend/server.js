@@ -8,6 +8,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const User = require('./models/User');
+const budgetRoutes = require("./routes/budgetRoutes");
 
 dotenv.config();
 
@@ -37,6 +38,7 @@ passport.deserializeUser(User.deserializeUser());
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/transactions', require('./routes/transactionRoutes'));
+app.use("/api/budgets", budgetRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 5000;
