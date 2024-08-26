@@ -1,0 +1,44 @@
+/* Define colors as variables */
+$credit-bg-color: #d4edda;
+/* Green for credit days */
+$debit-bg-color: #f8d7da;
+/* Red for debit days */
+$text-color: #333;
+/* General text color */
+
+.calendar-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+
+        h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+    }
+
+    .calendar-section {
+        .calendar-main {
+            width: 1000px;
+            padding: 2em;
+
+            .credit-day {
+                background-color: #d4edda;
+            }
+
+            .debit-day {
+                background-color: #f8d7da;
+            }
+
+            .spending-amount {
+                font-size: 0.8em;
+                text-align: center;
+                color: $text-color;
+            }
+        }
+    }
+}

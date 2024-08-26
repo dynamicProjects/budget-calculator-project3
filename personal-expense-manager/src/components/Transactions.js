@@ -19,7 +19,7 @@ const Transactions = ({ handleLogout }) => {
     const [transactionType, setTransactionType] = useState("All");
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [currentMonth, setCurrentMonth] = useState(moment().startOf("month"));
-    const creditCategoriesArray = ["Salary", "Side Jobs", "Pension", "Other (Income)"];
+    const creditCategoriesArray = ["Salary", "Side Jobs", "Pension", "Debt Payment", "Other (Income)"];
     const debitCategoriesArray = [
         "Eating Out",
         "Shopping",
@@ -32,6 +32,7 @@ const Transactions = ({ handleLogout }) => {
         "Health/Sport",
         "Pets",
         "Travel",
+        "Debt Payment",
         "Other (Expenses)"];
 
     useEffect(() => {

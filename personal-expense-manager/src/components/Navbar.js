@@ -15,9 +15,7 @@ const Navbar = ({ title, handleLogout }) => {
                 <Link to="/" className="nav-link">Dashboard</Link>
                 <Link to="/transactions" className="nav-link">Transactions</Link>
                 <Link to="/budgets" className="nav-link">Budgets</Link>
-                <Link to="/debts" className="nav-link">Debts</Link>
-                <Link to="/settings" className="nav-link">Settings</Link>
-                <Link to="/feedbackSupport" className="nav-link">Feedback/Support</Link>
+                <Link to="/calendar" className="nav-link">Calendar</Link>
                 <Link to="/about" className="nav-link">About</Link>
             </nav>
             <button onClick={handleLogout} className="logout-btn">Logout</button>

@@ -15,6 +15,8 @@ const Budgets = ({ handleLogout }) => {
         amount: "",
         duration: "Monthly", // Default duration
     });
+    const now = new Date();
+    const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
     const debitCategoriesArray = [
         "Eating Out",
         "Shopping",
@@ -27,6 +29,7 @@ const Budgets = ({ handleLogout }) => {
         "Health/Sport",
         "Pets",
         "Travel",
+        "Debt Payment",
         "Other (Expenses)"];
 
     useEffect(() => {
@@ -52,11 +55,10 @@ const Budgets = ({ handleLogout }) => {
         }
     };
 
-    const calculateSpentAmount = (category) => {
-        const now = new Date();
+    const calculateSpentAmount = (category, duration) => {
         return transactions.reduce((acc, transaction) => {
             const transactionDate = new Date(transaction.date);
-            const isWithinBudgetPeriod = formData.duration === "Monthly"
+            const isWithinBudgetPeriod = duration === "Monthly"
                 ? transactionDate.getMonth() === now.getMonth() && transactionDate.getFullYear() === now.getFullYear()
                 : transactionDate.getFullYear() === now.getFullYear();
             if (transaction.category === category && isWithinBudgetPeriod) {
@@ -121,11 +123,15 @@ const Budgets = ({ handleLogout }) => {
                 {/* Display Budgets */}
                 <div className="budget-list mt-4">
                     {budgets.map((budget) => {
-                        const spent = calculateSpentAmount(budget.category);
+                        const spent = calculateSpentAmount(budget.category, budget.duration);
                         const progressVariant = getProgressBarVariant(spent, budget.amount);
+                        const durationDate = budget.duration === "Monthly"
+                            ? now.getMonth() + 1 + "/1/" + now.getFullYear() + " - " + (now.getMonth() + 1) + "/" + lastDayOfMonth + "/" + now.getFullYear()
+                            : "1/1/" + now.getFullYear() + " - 12/31/" + now.getFullYear();
                         return (
                             <div key={budget._id} className="budget-item mb-3">
                                 <h5>{budget.category} ({budget.duration})</h5>
+                                <p className="budget-date">{durationDate}</p>
                                 <ProgressBar
                                     now={(spent / budget.amount) * 100}
                                     variant={progressVariant}
