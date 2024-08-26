@@ -17,8 +17,11 @@ const Dashboard = ({ handleLogout }) => {
     useEffect(() => {
         // Fetch transactions from the backend
         const fetchTransactions = async () => {
+            const baseURL = process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://budget-calculator-project3.onrender.com";
             try {
-                const response = await axios.get("https://budget-calculator-project3.onrender.com/api/transactions", { withCredentials: true });
+                const response = await axios.get(`${baseURL}/api/transactions`, { withCredentials: true });
                 setTransactions(response.data);
 
                 // Calculate summary

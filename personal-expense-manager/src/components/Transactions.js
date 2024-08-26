@@ -38,11 +38,14 @@ const Transactions = ({ handleLogout }) => {
     useEffect(() => {
         fetchTransactions();
     });
+    const baseURL = process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://budget-calculator-project3.onrender.com";
 
     const fetchTransactions = async () => {
         try {
             const response = await axios.get(
-                "https://budget-calculator-project3.onrender.com/api/transactions",
+                `${baseURL}/api/transactions`,
                 { withCredentials: true }
             );
             const filteredTransactions = response.data.filter((transaction) => {
@@ -83,8 +86,9 @@ const Transactions = ({ handleLogout }) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+
         try {
-            await axios.post("https://budget-calculator-project3.onrender.com/api/transactions", formData, {
+            await axios.post(`${baseURL}/api/transactions`, formData, {
                 withCredentials: true,
             });
             fetchTransactions(); // Refresh transactions after adding a new one

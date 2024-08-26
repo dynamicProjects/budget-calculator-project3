@@ -15,10 +15,12 @@ const Register = ({ handleLogin }) => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-
+        const baseURL = process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://budget-calculator-project3.onrender.com";
         try {
             const response = await axios.post(
-                "https://budget-calculator-project3.onrender.com/api/users/register",
+                `${baseURL}/api/users/register`,
                 {
                     username,
                     email,

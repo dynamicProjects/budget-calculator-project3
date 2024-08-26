@@ -15,9 +15,13 @@ const Login = ({ handleLogin }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const baseURL = process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://budget-calculator-project3.onrender.com";
+
         try {
             const response = await axios.post(
-                "https://budget-calculator-project3.onrender.com/api/users/login",
+                `${baseURL}/api/users/login`,
                 {
                     username,
                     password,
