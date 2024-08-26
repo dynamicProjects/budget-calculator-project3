@@ -16,7 +16,7 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({ credentials: true, origin: '*' }));
+app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 app.use(
   session({
