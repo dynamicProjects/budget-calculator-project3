@@ -8,6 +8,7 @@ import FeedbackSupport from './components/FeedbackSupport';
 import Budgets from './components/Budgets';
 import Debts from './components/Debts';
 import Settings from './components/Settings';
+import Register from "./components/Register";
 
 import './App.css';
 
@@ -42,6 +43,7 @@ const App = () => {
                     <Route path="/settings" element={isAuthenticated ? <Settings handleLogout={handleLogout} /> : <Navigate to="/" />} />
                     <Route path="/feedbackSupport" element={isAuthenticated ? <FeedbackSupport handleLogout={handleLogout} /> : <Navigate to="/" />} />
                     <Route path="/about" element={isAuthenticated ? <About handleLogout={handleLogout} /> : <Navigate to="/" />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </div>
         </Router>

@@ -6,43 +6,34 @@ import expenseLogo from '../assets/images/expense-manager.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/login.scss';
 
-const Login = ({ handleLogin }) => {
+const Register = ({ handleLogin }) => {
     const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/api/users/login",
+                "http://localhost:5000/api/users/register",
                 {
                     username,
+                    email,
                     password,
                 },
                 { withCredentials: true }
             );
 
             console.log(response.data);
-            handleLogin();
+            // Redirect to the dashboard after successful signup
+            navigate("/");
         } catch (err) {
             setError(err.response.data.message);
         }
     };
-
-    const handleRegister = async (e) => {
-        e.preventDefault();
-    
-        try {
-          
-            navigate("/register");
-          
-        } catch (err) {
-          setError(err.response.data.message);
-        }
-      };
 
     return (
         <Container className="d-flex justify-content-center align-items-center min-vh-100">
@@ -52,9 +43,9 @@ const Login = ({ handleLogin }) => {
                         <Card.Body>
                             <div className="text-center mb-4">
                                 <img src={expenseLogo} alt="Logo" className="mb-3 imgSize" />
-                                <h2>Sign In</h2>
+                                <h2>Register</h2>
                             </div>
-                            <Form onSubmit={handleSubmit}>
+                            <Form onSubmit={handleRegister}>
                                 <Form.Group controlId="formUsername">
                                     <Form.Label>Username</Form.Label>
                                     <Form.Control
@@ -62,6 +53,16 @@ const Login = ({ handleLogin }) => {
                                         placeholder="Enter username"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
+                                        required
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="formEmail">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control
+                                        type="email"
+                                        placeholder="Enter email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                         required
                                     />
                                 </Form.Group>
@@ -75,14 +76,9 @@ const Login = ({ handleLogin }) => {
                                         required
                                     />
                                 </Form.Group>
-                                <Form.Group>
-                                    <Button variant="primary" type="submit" className="w-25 m-3">
-                                        Login
-                                    </Button>
-                                    <Button variant="secondary" type='button' onClick={handleRegister} className="w-25 m-3">
-                                        Register
-                                    </Button>
-                                </Form.Group>
+                                <Button variant="primary" type='submit' className="w-100 m-3">
+                                    Sign Up
+                                </Button>
                                 {error && <p className="error">{error}</p>}
                             </Form>
                         </Card.Body>
@@ -93,4 +89,4 @@ const Login = ({ handleLogin }) => {
     );
 };
 
-export default Login;
+export default Register;
