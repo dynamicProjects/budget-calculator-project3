@@ -39,7 +39,7 @@ const Budgets = ({ handleLogout }) => {
 
     const fetchBudgets = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/budgets", { withCredentials: true });
+            const response = await axios.get("https://budget-calculator-project3.onrender.com/api/budgets", { withCredentials: true });
             setBudgets(response.data);
         } catch (error) {
             console.error("Error fetching budgets:", error);
@@ -48,7 +48,7 @@ const Budgets = ({ handleLogout }) => {
 
     const fetchTransactions = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/transactions", { withCredentials: true });
+            const response = await axios.get("https://budget-calculator-project3.onrender.com/api/transactions", { withCredentials: true });
             setTransactions(response.data);
         } catch (error) {
             console.error("Error fetching transactions:", error);
@@ -83,9 +83,9 @@ const Budgets = ({ handleLogout }) => {
         e.preventDefault();
         try {
             if (modalMode === "Add") {
-                await axios.post("http://localhost:5000/api/budgets", formData, { withCredentials: true });
+                await axios.post("https://budget-calculator-project3.onrender.com/api/budgets", formData, { withCredentials: true });
             } else {
-                await axios.put(`http://localhost:5000/api/budgets/${currentBudget._id}`, formData, { withCredentials: true });
+                await axios.put(`https://budget-calculator-project3.onrender.com/api/budgets/${currentBudget._id}`, formData, { withCredentials: true });
             }
             fetchBudgets();
             setShowModal(false);
@@ -107,7 +107,7 @@ const Budgets = ({ handleLogout }) => {
 
     const handleDeleteBudget = async (budgetId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/budgets/${budgetId}`, { withCredentials: true });
+            await axios.delete(`https://budget-calculator-project3.onrender.com/api/budgets/${budgetId}`, { withCredentials: true });
             fetchBudgets();
         } catch (error) {
             console.error("Error deleting budget:", error);

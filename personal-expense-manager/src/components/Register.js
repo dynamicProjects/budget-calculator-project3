@@ -18,7 +18,7 @@ const Register = ({ handleLogin }) => {
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/api/users/register",
+                "https://budget-calculator-project3.onrender.com/api/users/register",
                 {
                     username,
                     email,
