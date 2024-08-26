@@ -16,7 +16,7 @@ const Budgets = ({ handleLogout }) => {
         duration: "Monthly", // Default duration
     });
     const now = new Date();
-    const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
+    const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const debitCategoriesArray = [
         "Eating Out",
         "Shopping",
@@ -36,11 +36,11 @@ const Budgets = ({ handleLogout }) => {
         fetchBudgets();
         fetchTransactions();
     }, []);
-    const baseURL = process.env.NODE_ENV === "development"
-            ? "http://localhost:5000"
-            : "https://budget-calculator-project3.onrender.com";
 
     const fetchBudgets = async () => {
+        const baseURL = process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://budget-calculator-project3.onrender.com";
         try {
             const response = await axios.get(`${baseURL}/api/budgets`, { withCredentials: true });
             setBudgets(response.data);
@@ -50,6 +50,9 @@ const Budgets = ({ handleLogout }) => {
     };
 
     const fetchTransactions = async () => {
+        const baseURL = process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://budget-calculator-project3.onrender.com";
         try {
             const response = await axios.get(`${baseURL}/api/transactions`, { withCredentials: true });
             setTransactions(response.data);
@@ -84,6 +87,9 @@ const Budgets = ({ handleLogout }) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        const baseURL = process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://budget-calculator-project3.onrender.com";
         try {
             if (modalMode === "Add") {
                 await axios.post(`${baseURL}/api/budgets`, formData, { withCredentials: true });
@@ -109,6 +115,9 @@ const Budgets = ({ handleLogout }) => {
     };
 
     const handleDeleteBudget = async (budgetId) => {
+        const baseURL = process.env.NODE_ENV === "development"
+            ? "http://localhost:5000"
+            : "https://budget-calculator-project3.onrender.com";
         try {
             await axios.delete(`${baseURL}/api/budgets/${budgetId}`, { withCredentials: true });
             fetchBudgets();
