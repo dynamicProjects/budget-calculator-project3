@@ -16,7 +16,7 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({ credentials: true, origin: 'https://budgetplanning-project-3.netlify.app/' }));
+app.use(cors({ credentials: true, origin: '*' }));
 app.use(express.json());
 app.use(
   session({
