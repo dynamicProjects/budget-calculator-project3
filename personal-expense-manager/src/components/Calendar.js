@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
 import axios from "axios";
-import { Container, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import 'react-calendar/dist/Calendar.css';
 import '../styles/calendar.scss';
 import Navbar from './Navbar';
 
 const SpendingCalendar = ({ handleLogout }) => {
     const [date, setDate] = useState(new Date());
-    const [transactions, setTransactions] = useState([]);
     const [spendingByDate, setSpendingByDate] = useState({});
     const [error, setError] = useState("");
 
@@ -18,7 +17,6 @@ const SpendingCalendar = ({ handleLogout }) => {
         const fetchTransactions = async () => {
             try {
                 const response = await axios.get("http://localhost:5000/api/transactions", { withCredentials: true });
-                setTransactions(response.data);
 
                 // Calculate spending by date
                 const spendingMap = {};
