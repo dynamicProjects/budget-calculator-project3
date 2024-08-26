@@ -36,6 +36,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/transactions', require('./routes/transactionRoutes'));
 
 // Start Server
 const PORT = process.env.PORT || 5000;
