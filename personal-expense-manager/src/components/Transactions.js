@@ -39,7 +39,7 @@ const Transactions = ({ handleLogout }) => {
         fetchTransactions();
     });
     const baseURL = process.env.NODE_ENV === "development"
-            ? "http://localhost:5000"
+            ? "http://localhost:8080"
             : "https://budget-calculator-project3.onrender.com";
 
     const fetchTransactions = async () => {

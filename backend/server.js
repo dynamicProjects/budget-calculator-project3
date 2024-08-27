@@ -25,7 +25,7 @@ app.use(
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
     cookie: { 
-      secure: true
+      secure: false
     },
   })
 );
@@ -33,6 +33,13 @@ app.use(
 // Passport Config
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Debugging middleware
+app.use((req, res, next) => {
+  console.log('Session ID:', req.sessionID);
+  console.log('User:', req.user);
+  next();
+});
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());

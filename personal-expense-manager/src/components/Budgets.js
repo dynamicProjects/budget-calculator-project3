@@ -39,7 +39,7 @@ const Budgets = ({ handleLogout }) => {
 
     const fetchBudgets = async () => {
         const baseURL = process.env.NODE_ENV === "development"
-            ? "http://localhost:5000"
+            ? "http://localhost:8080"
             : "https://budget-calculator-project3.onrender.com";
         try {
             const response = await axios.get(`${baseURL}/api/budgets`, { withCredentials: true });
@@ -51,7 +51,7 @@ const Budgets = ({ handleLogout }) => {
 
     const fetchTransactions = async () => {
         const baseURL = process.env.NODE_ENV === "development"
-            ? "http://localhost:5000"
+            ? "http://localhost:8080"
             : "https://budget-calculator-project3.onrender.com";
         try {
             const response = await axios.get(`${baseURL}/api/transactions`, { withCredentials: true });
@@ -116,7 +116,7 @@ const Budgets = ({ handleLogout }) => {
 
     const handleDeleteBudget = async (budgetId) => {
         const baseURL = process.env.NODE_ENV === "development"
-            ? "http://localhost:5000"
+            ? "http://localhost:8080"
             : "https://budget-calculator-project3.onrender.com";
         try {
             await axios.delete(`${baseURL}/api/budgets/${budgetId}`, { withCredentials: true });
