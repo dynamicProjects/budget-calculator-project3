@@ -14,6 +14,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+### Deployed Project
+
 The deployed project (usinf render and netlify) is available at https://budget-planner-project3.online/ or at https://budgetplanning-project-3.netlify.app/ (only works in Firefox for now)
 
 Please use the following credentials to see all the different transactions, budgets and dashboard:
