@@ -25,8 +25,7 @@ app.use(
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
     cookie: { 
-      secure: true,
-      maxAge: 24 * 60 * 60 * 1000,
+      secure: true
     },
   })
 );
@@ -34,6 +33,7 @@ app.use(
 // Passport Config
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
